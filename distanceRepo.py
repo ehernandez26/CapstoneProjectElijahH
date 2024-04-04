@@ -41,7 +41,7 @@ while distance <= 1000:
   distance = pulse_duration * 17150
   distance = round(distance, 2)
 #prints the distance in cm
-  print('Distance:',distance,'cm')
+print('Distance:',distance,'cm')
 
 #else loop for when the distance >= 10000 which prints a message, and will later activate other code
 else:
