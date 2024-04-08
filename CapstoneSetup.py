@@ -181,6 +181,8 @@ def distance:
   #else loop for when the distance >= 10000 which prints a message, and will later activate other code
   else:
     print('UH OH!')
+    buzzer()
+    light()
    
 def servo:
   servo = Servo(1)
