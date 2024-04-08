@@ -85,10 +85,10 @@ def keypad:
       if (not pressed and GPIO.input(C4) == 1):
           if input == secretCode:
               print("Code correct!")
-              # TODO: Activate Sensor/Motor to move Sensor
+              return 1
           else:
               print("Incorrect code!")
-              # TODO: Light up LED and Activate Buzzer
+              return 0
           pressed = True
 
       GPIO.output(L3, GPIO.LOW)
