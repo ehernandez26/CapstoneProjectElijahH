@@ -136,3 +136,9 @@ def keyReturn():
                     time.sleep(0.1)
     except KeyboardInterrupt:
         print("\nApplication stopped!")
+
+print("it reached this point")
+x = keyReturn()
+print("this is the second one")
+print (x)
+print("then it reached this point")
