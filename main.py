@@ -5,15 +5,6 @@ import time
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-
-i = keypad()
-
-if i == 1:
-  print(i)
-else:
-  print("didn't work")
-
-
 def keypad():
   # This program allows a user to enter a
   # Code. If the C-Button is pressed on the
@@ -142,4 +133,10 @@ def keypad():
                   time.sleep(0.1)
   except KeyboardInterrupt:
       print("\nApplication stopped!")
-  
+
+i = keypad()
+
+if i == 1:
+  print(i)
+else:
+  print("didn't work")

@@ -2,7 +2,6 @@
 # Code. If the C-Button is pressed on the
 # keypad, the input is reset. If the user
 # hits the A-Button, the input is checked.
-
 import RPi.GPIO as GPIO
 import time
 
@@ -80,6 +79,19 @@ def checkSpecialKeys():
     if (not pressed and GPIO.input(C4) == 1):
         if input == secretCode:
             print("Code correct!")
+            #This part to "return 1" is all testing and may be deleted!!!!!!
+            GPIO.setmode(GPIO.BCM)
+            GPIO.setup(1, GPIO.OUT)
+
+            servo=GPIO.PWM(1, 50)
+            servo.start(0)
+
+            servo.ChangeDutyCycle(10) # left -90 deg position
+            time.sleep(5)
+            servo.ChangeDutyCycle(-10) # neutral position
+
+            servo.stop()
+            #This is the end of the testing code!!!!!!!
             #return 1
             # TODO: Activate Sensor/Motor to move Sensor
         else:

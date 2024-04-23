@@ -80,11 +80,11 @@ def checkSpecialKeys():
     if (not pressed and GPIO.input(C4) == 1):
         if input == secretCode:
             print("Code correct!")
-            #return 1
+            return 1
             # TODO: Activate Sensor/Motor to move Sensor
         else:
             print("Incorrect code!")
-            #return 0
+            return 0
             # TODO: Light up LED and Activate Buzzer
         pressed = True
 
