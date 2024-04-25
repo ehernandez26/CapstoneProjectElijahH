@@ -21,7 +21,7 @@ C4 = 21
 
 # The GPIO pin of the column of the key that is currently
 # being held down or -1 if no key is pressed
-keypadPressed = -1
+
 
 secretCode = "4789"
 input = ""
@@ -69,16 +69,12 @@ def setAllLines(state):
 def checkSpecialKeys():
     global input
     pressed = False
-
     GPIO.output(L3, GPIO.HIGH)
-
     if (GPIO.input(C4) == 1):
         print("Input reset!");
         pressed = True
-
     GPIO.output(L3, GPIO.LOW)
     GPIO.output(L1, GPIO.HIGH)
-
     if (not pressed and GPIO.input(C4) == 1):
         if input == secretCode:
             print("Code correct!")
@@ -89,12 +85,9 @@ def checkSpecialKeys():
             return 0
             # TODO: Light up LED and Activate Buzzer
         pressed = True
-
     GPIO.output(L3, GPIO.LOW)
-
     if pressed:
         input = ""
-
     return pressed
 
 # reads the columns and appends the value, that corresponds
@@ -114,7 +107,7 @@ def readLine(line, characters):
         input = input + characters[3]
     GPIO.output(line, GPIO.LOW)
 def keyReturn():
-#Xtry:
+    keypadPressed = -1
     while True:
             # If a button was previously pressed,
             # check, whether the user has released it yet
