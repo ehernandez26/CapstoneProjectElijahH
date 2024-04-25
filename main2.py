@@ -22,6 +22,7 @@ C4 = 21
 # The GPIO pin of the column of the key that is currently
 # being held down or -1 if no key is pressed
 
+keypadPressed = -1
 
 secretCode = "4789"
 input = ""
