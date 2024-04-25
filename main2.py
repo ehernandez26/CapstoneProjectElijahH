@@ -114,8 +114,8 @@ def readLine(line, characters):
         input = input + characters[3]
     GPIO.output(line, GPIO.LOW)
 def keyReturn():
-    try:
-        while True:
+#Xtry:
+    while True:
             # If a button was previously pressed,
             # check, whether the user has released it yet
             if keypadPressed != -1:
@@ -134,11 +134,11 @@ def keyReturn():
                     time.sleep(0.1)
                 else:
                     time.sleep(0.1)
-    except KeyboardInterrupt:
-        print("\nApplication stopped!")
+#    except KeyboardInterrupt:
+#        print("\nApplication stopped!")
 
 print("it reached this point")
-x = keyReturn()
-print("this is the second one")
-print (x)
-print("then it reached this point")
+keyReturn()
+#print("this is the second one")
+#print (x)
+#print("then it reached this point")
