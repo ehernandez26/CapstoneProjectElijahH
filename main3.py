@@ -6,6 +6,25 @@
 import RPi.GPIO as GPIO
 import time
 
+#start of servo code
+import RPi.GPIO as GPIO
+from time import sleep
+
+def servoMove():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(1, GPIO.OUT)
+
+    servo=GPIO.PWM(1, 50)
+    servo.start(0)
+
+    servo.ChangeDutyCycle(10) # left -90 deg position
+    sleep(5)
+    servo.ChangeDutyCycle(-10) # neutral position
+
+    servo.stop()
+    GPIO.cleanup()
+#end of servo code
+
 # These are the GPIO pin numbers where the
 # lines of the keypad matrix are connected
 L1 = 5
@@ -79,6 +98,8 @@ def checkSpecialKeys():
     if (not pressed and GPIO.input(C4) == 1):
         if input == secretCode:
             print("Code correct!")
+            servoMove()
+            print("after servo")
             return 1
             # TODO: Activate Sensor/Motor to move Sensor
         else:
@@ -133,6 +154,4 @@ def keyReturn():
 
 print("it reached this point")
 keyReturn()
-#print("this is the second one")
-#print (x)
-#print("then it reached this point")
+print("after keyboard")
