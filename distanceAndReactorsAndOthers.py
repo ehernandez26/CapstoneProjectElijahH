@@ -196,6 +196,9 @@ def checkSpecialKeys():
             # TODO: Activate Sensor/Motor to move Sensor
         else:
             print("Incorrect code!")
+            buzzer.on()
+            time.sleep(1)
+            buzzer.off()
             #return 0
             # TODO: Light up LED and Activate Buzzer
         pressed = True
