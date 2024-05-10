@@ -89,7 +89,7 @@ def checkSpecialKeys():
 
             servo.ChangeDutyCycle(10) # left -90 deg position
             time.sleep(5)
-            servo.ChangeDutyCycle(-10) # neutral position
+            #servo.ChangeDutyCycle(-10) # neutral position
 
             servo.stop()
             
