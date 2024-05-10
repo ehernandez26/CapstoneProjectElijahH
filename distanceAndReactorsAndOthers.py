@@ -3,6 +3,7 @@
 # keypad, the input is reset. If the user
 # hits the A-Button, the input is checked.
 import RPi.GPIO as GPIO
+from gpiozero import Buzzer
 import time
 
 # These are the GPIO pin numbers where the
@@ -67,7 +68,7 @@ def checkSpecialKeys():
     global input
     pressed = False
 
-    GPIO.output(L3, GPIO.HIGH)
+    #GPIO.output(L3, GPIO.HIGH)
 
     if (GPIO.input(C4) == 1):
         print("Input reset!");
@@ -91,12 +92,6 @@ def checkSpecialKeys():
             servo.ChangeDutyCycle(-10) # neutral position
 
             servo.stop()
-
-            #sets up the codes GPIO, time, and mode
-            import RPi.GPIO as GPIO
-            import time
-            GPIO.setmode(GPIO.BCM)
-            GPIO.setwarnings(False)
             
             #set pins for the sensor input and output
             TRIG = 23
@@ -166,26 +161,22 @@ def checkSpecialKeys():
             print('Distance:',distance,'cm')
             
             #Now activate Buzzer and LED
-            from gpiozero import Buzzer
-            from time import sleep
-            import RPi.GPIO as GPIO
             
             LED_PIN = 27
             
-            GPIO.setmode(GPIO.BCM)
             GPIO.setup(LED_PIN, GPIO.OUT)
             
             buzzer = Buzzer(25)
             
             while True:
                 GPIO.output(LED_PIN, GPIO.HIGH)
-                sleep(1)
+                time.sleep(1)
                 GPIO.output(LED_PIN, GPIO.LOW)
-                sleep(1)
+                time.sleep(1)
                 buzzer.on()
-                sleep(1)
+                time.sleep(1)
                 buzzer.off()
-                sleep(1)
+                time.sleep(1)
             
             while True:
                 buzzer.beep()
