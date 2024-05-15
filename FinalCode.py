@@ -1,7 +1,4 @@
-# This program allows a user to enter a
-# Code. If the C-Button is pressed on the
-# keypad, the input is reset. If the user
-# hits the A-Button, the input is checked.
+#Importing for future coding
 import RPi.GPIO as GPIO
 from gpiozero import Buzzer
 import time
@@ -23,6 +20,7 @@ C4 = 21
 # being held down or -1 if no key is pressed
 keypadPressed = -1
 
+# Secret Code that begins the entire sequence
 secretCode = "4789"
 input = ""
 
@@ -78,12 +76,14 @@ def checkSpecialKeys():
     GPIO.output(L1, GPIO.HIGH)
 
     if (not pressed and GPIO.input(C4) == 1):
+        # If code is entered correctly then it starts the servo 
         if input == secretCode:
             print("Code correct!")
-            #This part to "return 1" is all testing and may be deleted!!!!!!
+            
+            # Set up code for the servo to work properly
             GPIO.setmode(GPIO.BCM)
             GPIO.setup(1, GPIO.OUT)
-
+            
             servo=GPIO.PWM(1, 50)
             servo.start(0)
 
@@ -92,6 +92,8 @@ def checkSpecialKeys():
             #servo.ChangeDutyCycle(-10) # neutral position
 
             servo.stop()
+
+            # End of Servo and Beginning of the Sensor Code
             
             #set pins for the sensor input and output
             TRIG = 23
